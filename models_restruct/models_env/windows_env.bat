@@ -5,19 +5,19 @@ rem set path
 set "PATH=C:\Program Files\Git\bin;C:\Program Files\Git\cmd;C:\Windows\System32;C:\Windows\SysWOW64;C:\zip_unzip;%PATH%"
 
 rem cuda_version
-echo %AGILE_PIPELINE_NAME% | findstr "-Cuda102-" >nul
+echo %AGILE_PIPELINE_NAME% | findstr "Cuda102" >nul
 if %errorlevel% equ 0 (
     set cuda_version=10.2
 )
-echo %AGILE_PIPELINE_NAME% | findstr "-Cuda112-" >nul
+echo %AGILE_PIPELINE_NAME% | findstr "Cuda112" >nul
 if %errorlevel% equ 0 (
     set cuda_version=11.2
 )
-echo %AGILE_PIPELINE_NAME% | findstr "-Cuda116-" >nul
+echo %AGILE_PIPELINE_NAME% | findstr "Cuda116" >nul
 if %errorlevel% equ 0 (
     set cuda_version=11.6
 )
-echo %AGILE_PIPELINE_NAME% | findstr "-Cuda117-" >nul
+echo %AGILE_PIPELINE_NAME% | findstr "Cuda117" >nul
 if %errorlevel% equ 0 (
     set cuda_version=11.7
 )
@@ -58,14 +58,12 @@ if not defined models_file for /f "tokens=5 delims=-" %%a in ("%AGILE_PIPELINE_N
 if not defined models_list set models_list=None
 
 rem system
-
-echo %AGILE_PIPELINE_NAME% | findstr "-Windows-" >nul
-if %errorlevel% equ 0 (
-    if not defined system set system=windows
-)
-echo %AGILE_PIPELINE_NAME% | findstr "-WindowsCPU-" >nul
+rem need first judgment windowscpu
+echo %AGILE_PIPELINE_NAME% | findstr "WindowsCPU" >nul
 if %errorlevel% equ 0 (
     if not defined system set system=windows_cpu
+)  else  (
+    if not defined system set system=windows
 )
 if not defined system set system=windows
 
@@ -95,7 +93,7 @@ if %errorlevel% equ 0 (
 )
 
 rem paddle_whl
-echo %AGILE_PIPELINE_NAME% | findstr "-Cuda117-" >nul
+echo %AGILE_PIPELINE_NAME% | findstr "Cuda117" >nul
 if %errorlevel% equ 0 (
     echo %Python_version% | findstr "310" >nul
     if %errorlevel% equ 0 (
@@ -108,7 +106,7 @@ if %errorlevel% equ 0 (
         )
     )
 )
-echo %AGILE_PIPELINE_NAME% | findstr "-Cuda116-" >nul
+echo %AGILE_PIPELINE_NAME% | findstr "Cuda116" >nul
 if %errorlevel% equ 0 (
     echo %Python_version% | findstr "39" >nul
     if %errorlevel% equ 0 (
@@ -121,7 +119,7 @@ if %errorlevel% equ 0 (
         )
     )
 )
-echo %AGILE_PIPELINE_NAME% | findstr "-Cuda112-" >nul
+echo %AGILE_PIPELINE_NAME% | findstr "Cuda112" >nul
 if %errorlevel% equ 0 (
     echo %Python_version% | findstr "38" >nul
     if %errorlevel% equ 0 (
@@ -134,7 +132,7 @@ if %errorlevel% equ 0 (
         )
     )
 )
-echo %AGILE_PIPELINE_NAME% | findstr "-Intel-" >nul
+echo %AGILE_PIPELINE_NAME% | findstr "Intel" >nul
 if %errorlevel% equ 0 (
     echo %Python_version% | findstr "310" >nul
     if %errorlevel% equ 0 (
