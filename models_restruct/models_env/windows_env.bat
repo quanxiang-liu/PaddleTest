@@ -134,6 +134,20 @@ if %errorlevel% equ 0 (
         )
     )
 )
+echo %AGILE_PIPELINE_NAME% | findstr "Intel" >nul
+if %errorlevel% equ 0 (
+    echo %Python_version% | findstr "310" >nul
+    if %errorlevel% equ 0 (
+        echo %AGILE_PIPELINE_NAME% | findstr "Develop" >nul
+        if %errorlevel% equ 0 (
+            if not defined paddle_whl set paddle_whl="https://paddle-wheel.bj.bcebos.com/develop/windows/windows-cpu-avx-mkl-vs2017/paddlepaddle-0.0.0-cp310-cp310-win_amd64.whl"
+        )  else  (
+            rem Release
+            if not defined paddle_whl set paddle_whl="https://paddle-wheel.bj.bcebos.com/release/windows/windows-cpu-avx-mkl-vs2017/paddlepaddle-0.0.0-cp310-cp310-win_amd64.whl"
+        )
+    )
+)
+
 rem not xly use default paddle_whl
 if not defined paddle_whl set paddle_whl="https://paddle-wheel.bj.bcebos.com/develop/windows/windows-gpu-cuda11.7-cudnn8.4.1-mkl-avx-vs2019/paddlepaddle_gpu-0.0.0.post117-cp310-cp310-win_amd64.whl"
 
