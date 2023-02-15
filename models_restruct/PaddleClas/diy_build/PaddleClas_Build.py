@@ -352,7 +352,7 @@ class PaddleClas_Build(Model_Build):
                     )
                 except:
                     logger.info("#### prepare download failed {} failed".format("nvidia_dali"))
-            if "10.2" in self.paddle_whl:
+            if "10.2" in str(self.paddle_whl):
                 exit_code_nvidia = os.system(
                     "python -m  pip install \
                 nvidia_dali_cuda102-1.8.0-3362432-py3-none-manylinux2014_x86_64.whl \
