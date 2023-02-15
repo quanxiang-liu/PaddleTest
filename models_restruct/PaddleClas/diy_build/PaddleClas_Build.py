@@ -345,36 +345,43 @@ class PaddleClas_Build(Model_Build):
                             "nvidia_dali_cuda102-1.8.0-3362432-py3-none-manylinux2014_x86_64.whl"
                         )
                     )
+                    wget.download(
+                        "https://paddle-qa.bj.bcebos.com/PaddleClas/{}".format(
+                            "nvidia_dali_cuda110-1.8.0-3362434-py3-none-manylinux2014_x86_64.whl"
+                        )
+                    )
                 except:
                     logger.info("#### prepare download failed {} failed".format("nvidia_dali"))
-            exit_code_nvidia = os.system(
-                "python -m  pip install \
-               nvidia_dali_cuda102-1.8.0-3362432-py3-none-manylinux2014_x86_64.whl \
-                -i https://mirror.baidu.com/pypi/simple"
-            )
-            if exit_code_nvidia:
+            if "10.2" in self.paddle_whl:
                 exit_code_nvidia = os.system(
-                    "python -m  pip install --user\
-               nvidia_dali_cuda102-1.8.0-3362432-py3-none-manylinux2014_x86_64.whl \
-                -i https://mirror.baidu.com/pypi/simple"
+                    "python -m  pip install \
+                nvidia_dali_cuda102-1.8.0-3362432-py3-none-manylinux2014_x86_64.whl \
+                    -i https://mirror.baidu.com/pypi/simple"
                 )
-            if exit_code_nvidia:
-                logger.info("repo {} python -m pip install nvidia_dali_cuda102 failed".format(self.reponame))
-                # return 1
-            # 暂时不装110
-            # wget.download(
-            #     "https://paddle-qa.bj.bcebos.com/PaddleClas/{}"\
-            #     .format("nvidia_dali_cuda110-1.8.0-3362434-py3-none-manylinux2014_x86_64.whl")
-            # )
-            # cmd_return = os.system(
-            #     "python -m  pip install \
-            #    nvidia_dali_cuda110-1.8.0-3362432-py3-none-manylinux2014_x86_64.whl \
-            #     -i https://mirror.baidu.com/pypi/simple"
-            # )
-            # if cmd_return:
-            #     logger.info("repo {} python -m pip install nvidia_dali_cuda110 failed".format(self.reponame))
-            # return 1
-
+                if exit_code_nvidia:
+                    exit_code_nvidia = os.system(
+                        "python -m  pip install --user\
+                nvidia_dali_cuda102-1.8.0-3362432-py3-none-manylinux2014_x86_64.whl \
+                    -i https://mirror.baidu.com/pypi/simple"
+                    )
+                if exit_code_nvidia:
+                    logger.info("repo {} python -m pip install nvidia_dali_cuda102 failed".format(self.reponame))
+                    # return 1
+            else:
+                exit_code_nvidia = os.system(
+                    "python -m  pip install \
+                nvidia_dali_cuda110-1.8.0-3362432-py3-none-manylinux2014_x86_64.whl \
+                    -i https://mirror.baidu.com/pypi/simple"
+                )
+                if exit_code_nvidia:
+                    exit_code_nvidia = os.system(
+                        "python -m  pip install --user\
+                nvidia_dali_cuda110-1.8.0-3362432-py3-none-manylinux2014_x86_64.whl \
+                    -i https://mirror.baidu.com/pypi/simple"
+                    )
+                if exit_code_nvidia:
+                    logger.info("repo {} python -m pip install nvidia_dali_cuda102 failed".format(self.reponame))
+                    # return 1
             os.environ["FLAGS_cudnn_deterministic"] = "False"
             logger.info("set FLAGS_cudnn_deterministic as {}".format("False"))
             # amp单独考虑，不能固定随机量，否则报错如下
