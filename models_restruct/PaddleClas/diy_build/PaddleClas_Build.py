@@ -370,13 +370,13 @@ class PaddleClas_Build(Model_Build):
             else:
                 exit_code_nvidia = os.system(
                     "python -m  pip install \
-                nvidia_dali_cuda110-1.8.0-3362432-py3-none-manylinux2014_x86_64.whl \
+                nvidia_dali_cuda110-1.8.0-3362434-py3-none-manylinux2014_x86_64.whl \
                     -i https://mirror.baidu.com/pypi/simple"
                 )
                 if exit_code_nvidia:
                     exit_code_nvidia = os.system(
                         "python -m  pip install --user\
-                nvidia_dali_cuda110-1.8.0-3362432-py3-none-manylinux2014_x86_64.whl \
+                nvidia_dali_cuda110-1.8.0-3362434-py3-none-manylinux2014_x86_64.whl \
                     -i https://mirror.baidu.com/pypi/simple"
                     )
                 if exit_code_nvidia:
