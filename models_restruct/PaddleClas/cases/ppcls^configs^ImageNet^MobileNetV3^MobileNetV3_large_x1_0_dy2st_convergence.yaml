@@ -12,6 +12,7 @@ case:
           - -o Global.to_static=True
           - -o Optimizer.lr.learning_rate=0.05
           - -o DataLoader.Train.sampler.batch_size=128
+          - -o Global.output_dir=output/MobileNetV3_dy2st
         result:
           loss:
             base: 2.04996
@@ -24,6 +25,7 @@ case:
           - -o Global.to_static=True
           - -o Optimizer.lr.learning_rate=0.05
           - -o DataLoader.Train.sampler.batch_size=128
+          - -o Global.output_dir=output/MobileNetV3_dy2st_cinn
         result:
           loss:
             base: 2.024
@@ -36,6 +38,7 @@ case:
           - -o Global.to_static=True
           - -o Optimizer.lr.learning_rate=0.05
           - -o DataLoader.Train.sampler.batch_size=128
+          - -o Global.output_dir=output/MobileNetV3_dy2st_prim
         result:
           loss:
             base: 2.02686
@@ -48,6 +51,7 @@ case:
           - -o Global.to_static=True
           - -o Optimizer.lr.learning_rate=0.05
           - -o DataLoader.Train.sampler.batch_size=128
+          - -o Global.output_dir=output/MobileNetV3_dy2st_prim_cinn
         result:
           loss:
             base: 2.00956
