@@ -27,6 +27,7 @@ class PaddleClas_End(object):
         初试化
         """
         self.reponame = os.environ["reponame"]
+        self.qa_yaml_name = os.environ["qa_yaml_name"]
 
     def dy2st_plt(self):
         """
