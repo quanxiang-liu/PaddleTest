@@ -1,5 +1,5 @@
 case:
-  linux:
+  linux_convergence:
     base: ./base/base_dy2st.yaml
     train:
       -
