@@ -1,0 +1,8 @@
+case:
+  linux:
+    base: ./base/base_dy2st.yaml
+    train:
+      -
+        name: dy2st
+      -
+        name: dy2st_prim
