@@ -51,7 +51,7 @@ def plt_dy2st(log_list, model_name):
                 logger.info("####task is {}".format(task))
                 logger.info("####avg ips is {}".format(tmp))
 
-            plt.plot(temp[:], label=task)
+            plt.plot(temp[:], label=task.split("/")[-1])
             plt.legend()  # 显示图例
 
             if "loss" in show or "ips" in show:
