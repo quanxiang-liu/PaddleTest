@@ -16,7 +16,7 @@ case:
           - -o DataLoader.Eval.dataset.cls_label_path=dataset/ILSVRC2012/partial_shuf_val_list.txt
         result:
           loss:
-            base: 2.16221
+            base: 0.10418
             threshold: 0.1
             evaluation: "-"
       -
@@ -44,7 +44,7 @@ case:
           - -o DataLoader.Eval.dataset.cls_label_path=dataset/ILSVRC2012/partial_shuf_val_list.txt
         result:
           loss:
-            base: 2.11642
+            base: 0.10421
             threshold: 0.1
             evaluation: "-"
       -
