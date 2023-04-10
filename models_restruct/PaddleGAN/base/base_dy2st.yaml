@@ -1,6 +1,6 @@
 train:
   name: dy
-  cmd: python tools/train.py --config-file configs/cyclegan_horse2zebra.yaml
+  cmd: python -u tools/main.py --config-file configs/cyclegan_horse2zebra.yaml
   params:
     - -o model.to_static=True
   result:
